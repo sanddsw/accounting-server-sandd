@@ -1,0 +1,121 @@
+<div class="grid-frame grid-block align-center" style="padding: 3rem 0">
+  <div class="grid-block" style="padding: 2rem 0; max-width: 50%">
+    <div class="dark card">
+      <div class="card-divider">
+        <section class="block-list mar-b-0">
+          <header>Denumire</header>
+          <ul>
+            <li><input class="isu-input all" type="text" ng-disabled="asset.sf < 4" placeholder="..." ng-model="asset.nm" class="mar-0"></li>
+          </ul>
+        </section>
+      </div>
+      <div class="card-section">
+        <section class="block-list mar-b-0">
+          <header>Adresa</header>
+          <ul>
+            <li><input class="isu-input all" type="text" ng-disabled="asset.sf < 4" placeholder="Localitate" ng-model="asset.ad.ct"></li>
+            <li>
+              <div class="grid-block">
+                <div class="small-8 medium-8">
+                  <input class="isu-input l-b" type="text" ng-disabled="asset.sf < 4" placeholder="..." ng-model="asset.ad.st">
+                </div>
+                <div class="small-4 medium-4">
+                  <input class="isu-input r-b" type="text" ng-disabled="asset.sf < 4" placeholder="..." ng-model="asset.ad.nr">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="block-list">
+          <header>Tip Locatie</header>
+          <ul>
+            <li class="with-dropdown">
+              <input class="isu-input all" ng-model="asset.tp">
+              <!--<select class="isu-input all" ng-disabled="asset.sf < 4" ng-model="asset.tp">-->
+              <!--<option ng-repeat="option in main.options" value="{{option.value}}">{{option.text}}</option>-->
+              <!--</select>-->
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="grid-block" style="border-left: 2px solid white;padding: 2rem 0; max-width: 50%">
+    <div class="dark card">
+      <section class="block-list">
+        <header>Datele firmei</header>
+        <ul>
+          <li><input class="isu-input all" type="text" placeholder="Denumire" ng-model="asset.frm.dn"></li>
+          <li>
+            <div class="grid-block">
+              <div class="small-6 medium-6">
+                <input class="isu-input l-b" type="text" placeholder="Telefon" ng-model="asset.frm.tf">
+              </div>
+              <div class="small-6 medium-6">
+                <input class="isu-input r-b" type="text" placeholder="Email" ng-model="asset.frm.ae">
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="grid-block">
+              <div class="small-6 medium-6">
+                <input class="isu-input l-b" type="text" placeholder="CUI" ng-model="asset.frm.cui">
+              </div>
+              <div class="small-6 medium-6">
+                <input class="isu-input r-b" type="text" placeholder="Nr Reg Com" ng-model="asset.frm.nrc">
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="grid-block">
+              <div class="small-6 medium-6">
+                <input class="isu-input l-b" type="text" placeholder="Website" ng-model="asset.frm.wb">
+              </div>
+              <div class="small-6 medium-6">
+                <input class="isu-input r-b" type="text" placeholder="Facebook" ng-model="asset.frm.fb">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="block-list mar-b-0">
+        <header>Autorizatie ISU</header>
+        <ul>
+          <li>
+            <div class="grid-block">
+              <div class="small-6 medium-6">
+                <input class="isu-input l-b" type="text" placeholder="Numar autorizatie" ng-model="asset.frm.at.nr">
+              </div>
+              <div class="small-6 medium-6">
+                <input class="isu-input r-b" type="text" placeholder="Data obtinerii" ng-model="asset.frm.at.dt">
+              </div>
+            </div>
+          </li>
+          <li></li>
+        </ul>
+      </section>
+      <section class="block-list mar-b-0">
+        <a class="grid-block upload-btn" ngf-select ng-model="main.files" ngf-multiple="true" ngf-allow-dir="true"
+           accept="application/pdf" ngf-pattern="'application/pdf'">Incarca Autorizatie</a>
+      </section>
+    </div>
+  </div>
+</div>
+
+<section class="block-list mar-b-0 isu-input btm-btns">
+  <ul class="mar-b-0">
+    <li>
+      <div class="align-justify grid-block mar-0">
+        <div class="small-4 grid-block">
+          <a class="primary button expand mar-0" href="" zf-close="">Renunta</a>
+        </div>
+        <div class="small-4 grid-block">
+          <a class="alert button expand mar-0" href="" ng-click="markAs(2)">Nesigur</a>
+        </div>
+        <div class="small-4 grid-block">
+          <a class="success button expand mar-0" href="" ng-click="markAs(0)">Sigur</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

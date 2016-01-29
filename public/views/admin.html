@@ -1,0 +1,65 @@
+<zf-offcanvas position="left" id="adminBtns">
+  <div class="button expand grid-block" ng-click="admin.selStatus = ''">Toate</div>
+  <div class="button expand grid-block" ng-click="admin.selStatus = 3">Recente</div>
+  <div class="button expand grid-block" ng-click="admin.selStatus = 2">Nesigure</div>
+  <div class="button expand grid-block" ng-click="admin.selStatus = 1">In Asteptare</div>
+  <div class="button expand grid-block" ng-click="admin.selStatus = 0">Sigure</div>
+</zf-offcanvas>
+<div>
+  <div class="dark title-bar">
+    <div class="center title">
+      <div zf-tabs="" id="adminPanel" displaced="true">
+        <div zf-tab="" title="Locatii">
+          <div class="grid-frame header">
+            <div class="small-5">
+              Denumire
+            </div>
+            <div class="small-4">
+              Adresa
+            </div>
+            <div class="small-3">
+              Oras
+            </div>
+          </div>
+          <div class="grid-frame table">
+            <a href="" class="grid-block" ng-repeat="asset in $parent.admin.assets | filter: {sf: $parent.admin.selStatus}" ng-style="asset.style" ng-click="asset.showAsset()">
+              <div class="small-5">
+                {{asset.nm}}
+              </div>
+              <div class="small-4">
+                {{asset.ad.st + " " + asset.ad.nr}}
+              </div>
+              <div class="small-3">
+                {{asset.ad.ct}}
+              </div>
+            </a>
+          </div>
+        </div>
+        <div zf-tab="" title="Utilizatori">
+          <table>
+            <thead>
+            <tr>
+              <th>Nume utilizator</th>
+              <th>Adresa email</th>
+              <th>Rol</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in $parent.admin.users">
+              <td>{{user.un}}</td>
+              <td>{{user.ae}}</td>
+              <td>{{$parent.admin.getRole(user.rl)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <span class="left"><a href="#!/"><i class="isu-icon icon-prev"></i></a></span>
+    <span class="right"><a zf-toggle="adminBtns" href=""><i class="isu-icon icon-gear"></i></a></span>
+  </div>
+  <br>
+  <!--<div id="adminPanel" ui-view="">-->
+  <div id="adminContent" zf-tab-content="" target="adminPanel">
+  </div>
+</div>
