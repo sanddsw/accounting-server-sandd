@@ -17,7 +17,7 @@ mongoose.connect('mongodb://ds047955.mongolab.com:47955/facturi-ssw', {
 });
 
 var routes = require('./routes/index');
-var client = require('./routes/client');
+var client = require('./routes/clients');
 var facturi = require('./routes/facturi');
 var apartamente = require('./routes/apartamente');
 var users = require('./routes/users');
