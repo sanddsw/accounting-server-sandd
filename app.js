@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', routes);
-app.use('/client', client);
+app.use('/clients', client);
 app.use('/facturi', facturi);
 app.use('/apartamente', apartamente);
 app.use('/users', users);
