@@ -1,29 +1,195 @@
 <!doctype html>
-<html>
+<html ng-app="generatorFactura">
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="stylesheet" href="styles/vendor.css">
-  <link rel="stylesheet" href="styles/main.css">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Oswald:400,700|Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+    <!--<link rel="stylesheet" href="../public/main.441b39d9.css">-->
+    <link rel="stylesheet" href="vendor.37522fb4.css">
+    <link rel="stylesheet" href="main.441b39d9.css">
 </head>
-<body ng-app="isuApp">
-<!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
-<!--<script>-->
-  <!--!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){-->
-      <!--(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),-->
-    <!--r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)-->
-  <!--}(window,document,'script','https://www.google-analytics.com/analytics.js','ga');-->
+<body ng-controller="BillCtrl as f" id="factura" size="A4">
+    <div class="sus">
+        <span class="float top"></span>
+        <span class="float btm"></span>
+        <div class="pane logo">
+            <img src="images/logo.png">
+        </div>
+        <div class="pane firms">
+            <div class="furnizor">
+                <div class="head">
+                    {{f.int8n.furnizor}}
+                </div>
+                <p><small>{{f.int8n.name}}</small>{{f.bill.seller.name}}</p>
+                <p><small>{{f.int8n.cif}}</small>{{f.bill.seller.cif}}</p>
+                <p><small>{{f.int8n.orc}}</small>{{f.bill.seller.orc}}</p>
+                <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.sediu}}</p>
+                <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.oras}}</p>
+                <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.judet}}</p>
+                <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.tara}}</p>
+                <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.banca}}</p>
+                <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.cont}}</p>
+            </div>
+            <div class="cumparator">
+                <div class="head">
+                    {{f.int8n.cumparator}}
+                </div>
+                <p><small>{{f.int8n.name}}</small>{{f.bill.buyer.name}}</p>
+                <p><small>{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
+                <p><small>{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
+                <p><small>{{f.int8n.sediu}}</small>{{f.bill.buyer.sediu}}</p>
+                <p><small>{{f.int8n.oras}}</small>{{f.bill.buyer.oras}}</p>
+                <p><small>{{f.int8n.judet}}</small>{{f.bill.buyer.judet}}</p>
+                <p><small>{{f.int8n.tara}}</small>{{f.bill.buyer.tara}}</p>
+                <p><small>{{f.int8n.banca}}</small>{{f.bill.buyer.banca}}</p>
+                <p><small>{{f.int8n.cont}}</small>{{f.bill.buyer.cont}}</p>
+            </div>
+        </div>
+        <div class="pane details">
+            <div class="left">
+                <p class="title">
+                    {{f.int8n.f_title}}
+                </p>
+                <p class="s-no">
+                    <small>{{f.int8n.serie}}</small>{{f.bill.serie}}<small>{{f.int8n.numar}}</small>{{f.bill.numar}}
+                </p>
+                <p class="date">
+                    <small>{{f.int8n.data}}</small>{{f.bill.data}}
+                </p>
+            </div>
+            <div class="right">
+            <span class="total">
+              {{f.int8n.total}}
+            </span>
+            <span class="worth">
+              {{f.bill.total + ' ' + f.bill.currency}}
+            </span>
+            </div>
+        </div>
+    </div>
+    <div class="table">
+        <div class="tab">
+            <div ng-repeat="task in f.bill.columns"
+                 ng-style="{{f.getWidth($index)}}">
+                {{task}}
+            </div>
+        </div>
+        <div class="prod-row" ng-repeat="prod in f.bill.products">
+            <div class="name">
+                <p class="title">{{prod.title}}</p>
+                <p class="desc">{{prod.desc}}</p>
+            </div>
+            <div ng-repeat="line in prod.lines" ng-style="{{f.getLineWidth($index)}}">
+                {{line + ' ' + f.bill.currency}}</div>
+        </div>
+    </div>
+    <div class="jos">
+        <div class="foot">
+            <div class="left">
+            </div>
+            <div class="right">
+            </div>
+        </div>
+    </div>
+<script src="vendor.25579785.js"></script>
+<script>
+    'use strict';
 
-  <!--ga('create', 'UA-XXXXX-X');-->
-  <!--ga('send', 'pageview');-->
-<!--</script>-->
+    /**
+     * @ngdoc function
+     * @name facturiSswApp.controller:BillCtrl
+     * @description
+     * # BillCtrl
+     * Controller of the facturiSswApp
+     */
 
-<script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
-<script src="scripts/vendor.js"></script>
-
-<script src="scripts/scripts.js"></script>
+    angular
+            .module('generatorFactura', [
+                'foundation',
+                'ngAnimate',
+                'ngCookies',
+                'ngResource',
+                'ngRoute',
+                'ngSanitize',
+                'ngTouch'
+            ])
+            .controller('BillCtrl', function () {
+                this.getWidth = function($index) {
+                    return {
+                        'width': ($index != 0) ? ('' + (45 - ((this.bill.columns.length - 2) * 15)) + '%') : '55%'
+                    }
+                };
+                this.getLineWidth = function($index) {
+                    return {
+                        'width': ($index != 0) ? ('' + (45 - ((this.bill.columns.length - 2) * 15)) + '%') : '45%'
+                    }
+                };
+                this.bill = {
+                    serie: 'SSW',
+                    numar: '001',
+                    data: '02-09-2015',
+                    currency: 'RON',
+                    columns: ['SERVICIU OFERIT', 'VALOARE'],
+                    total: 4000.00,
+                    seller: {
+                        name: "Sandd Soft Works S.R.L.",
+                        cif: "33535396",
+                        orc: "J25/235/01.09.2014",
+                        sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
+                        oras: "Drobeta Turnu Severin",
+                        judet: "Mehedinti",
+                        tara: "Romania",
+                        banca: "ING Bank",
+                        cont: "RO000PULA"
+                    },
+                    buyer: {
+                        name: "Sandd Soft Works S.R.L.",
+                        cif: "33535396",
+                        //  function() {
+                        //  return (this.buyer.isEU) ? "x" : "33535396"
+                        //},
+                        orc: "J25/235/01.09.2014",
+                        sediu: "Str Smardan 26, Bl S4E, Sc 1, Ap 4",
+                        oras: "Drobeta Turnu Severin",
+                        judet: "Mehedinti",
+                        tara: "Romania",
+                        banca: "ING Bank",
+                        cont: "RO000PULA"
+                    },
+                    products: [
+                        {
+                            lines: [4000.00],
+                            title: "Dezvoltare software la comanda",
+                            desc: "Conform contractului 01.01.2016"
+                        },
+                        {
+                            lines: [4000.00],
+                            title: "Dezvoltare software la comanda",
+                            desc: "Conform contractului 01.01.2016"
+                        }
+                    ]
+                };
+                this.int8n = {
+                    data: "Data",
+                    f_title: "Factura Fiscala",
+                    serie: "Serie",
+                    numar: "Numar",
+                    furnizor: "Furnizor",
+                    cumparator: "Cumparator",
+                    name: "Denumirea firmei",
+                    cif: "Codul unic de identificare",
+                    orc: "Numar ordin ORC",
+                    sediu: "Sediul",
+                    oras: "Oras",
+                    judet: "Judet",
+                    tara: "Tara",
+                    banca: "Banca",
+                    cont: "Cont",
+                    total: "TOTAL"
+                };
+            });
+</script>
 </body>
 </html>
