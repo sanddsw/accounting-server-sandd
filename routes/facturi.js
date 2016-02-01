@@ -1,11 +1,12 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Factura = mongoose.model('Facturi');
 var multer  = require('multer');
 var upload = multer({ dest: './uploads/' });
-var phantom = require('phantom');
+var wkhtmltopdf = require('wkhtmltopdf');
 
 router.get('/', function(req, res, next) {
   Factura.find().exec(function(err, assets){
@@ -16,17 +17,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/download/:id', function (req, res) {
-    phantom.create(function (ph) {
-        ph.createPage(function (page) {
-            page.open("views/index.html", function (status) {
-                console.log("opened google? ", status);
-                var cale = path.join(__dirname, '/github.png');
-                page.render('github.pdf');
-                console.log(cale);
-                res.sendFile(path.join(__dirname, '/../github.pdf'));
-            });
-        });
-    });
+    wkhtmltopdf('http://facturi-ssw.cloudapp.net', { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
+        .pipe(fs.createWriteStream('out.pdf').on('close', function() {
+            res.sendFile(path.join(__dirname, '/../out.pdf'))
+    }));
 });
 
 router.post('/', function(req, res, next) {
