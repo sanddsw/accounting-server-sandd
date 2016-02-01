@@ -4,8 +4,13 @@ generate_model("Client", {
         nume: String,
         cif: String,
         orc: String,
-        sediul: String,
-        judet: String,
+        adresa: {
+            sediu: String,
+            sediu2: String,
+            oras: String,
+            judet: String,
+            tara: String
+        },
         banca: [{
             nume: String,
             cont: String,
