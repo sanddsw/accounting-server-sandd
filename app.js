@@ -19,6 +19,7 @@ mongoose.connect('mongodb://ds047955.mongolab.com:47955/facturi-ssw', {
 var routes = require('./routes/index');
 var client = require('./routes/clients');
 var facturi = require('./routes/facturi');
+var generator = require('./routes/generator');
 var apartamente = require('./routes/apartamente');
 var users = require('./routes/users');
 
@@ -45,6 +46,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/clients', client);
+app.use('/generator', generator);
 app.use('/facturi', facturi);
 app.use('/apartamente', apartamente);
 app.use('/users', users);

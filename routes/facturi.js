@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/download/:id', function (req, res) {
-    wkhtmltopdf('http://localhost:8080/facturi/generate/:' + req.params.id , { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
+    wkhtmltopdf('http://localhost:8080/generator/:' + req.params.id , { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
         .pipe(fs.createWriteStream(path.join(__dirname, '../out.pdf')).on('close', function() {
             res.sendFile(path.join(__dirname, '../out.pdf'))
     }));
@@ -46,9 +46,5 @@ router.get('/pdf/:fileName', function(req, res) {
 
 router.post('/upload/', upload.single('file'), function(req, res, next) {
   res.json(req.file.filename).end();
-});
-
-router.get('/generate/', function(req, res, next) {
-    res.render('bill', { title: 'Factura SandD Soft Works' });
 });
 module.exports = router;
