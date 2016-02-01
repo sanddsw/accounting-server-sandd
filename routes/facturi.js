@@ -17,9 +17,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/download/:id', function (req, res) {
-    wkhtmltopdf('http://facturi-ssw.cloudapp.net', { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
-        .pipe(fs.createWriteStream('out.pdf').on('close', function() {
-            res.sendFile(path.join(__dirname, '/../out.pdf'))
+    wkhtmltopdf('http://localhost:8080/', { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
+        .pipe(fs.createWriteStream(path.join(__dirname, '../out.pdf')).on('close', function() {
+            res.sendFile(path.join(__dirname, '../out.pdf'))
     }));
 });
 
@@ -40,6 +40,10 @@ router.post('/update/', function(req, res, next) {
     res.json(asset);
   })
 });
+router.get('/pdf/:fileName', function(req, res) {
+    res.sendFile(path.join(__dirname, '../', req.params.fileName));
+});
+
 router.post('/upload/', upload.single('file'), function(req, res, next) {
   res.json(req.file.filename).end();
 });
