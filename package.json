@@ -1,39 +1,9 @@
 {
-<<<<<<< HEAD
-  "_args": [
-    [
-      "git+ssh://git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git",
-      "/Users/andreisamciuc/Projects/generator-factura"
-    ]
-  ],
-  "_from": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git",
-  "_id": "ssw-facturi-node@0.0.1",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/ssw-facturi-node",
-  "_phantomChildren": {},
-  "_requested": {
-    "hosted": {
-      "directUrl": "https://bitbucket.org/sanddsoftworks/ssw-facturi-node/raw/master/package.json",
-      "httpsUrl": "git+https://bitbucket.org/sanddsoftworks/ssw-facturi-node.git",
-      "shortcut": "bitbucket:sanddsoftworks/ssw-facturi-node",
-      "ssh": "git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git",
-      "sshUrl": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git",
-      "type": "bitbucket"
-    },
-    "name": null,
-    "raw": "git+ssh://git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git",
-    "rawSpec": "git+ssh://git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git",
-    "scope": null,
-    "spec": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git",
-    "type": "hosted"
-=======
   "name": "ssw-facturi-node",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
->>>>>>> db92107c510178969026f96d6d9a82c01b032da6
   },
   "_requiredBy": [
     "/"
@@ -69,15 +39,6 @@
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git"
-  },
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "version": "0.0.1"
-=======
     "url": "git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git"
   }
->>>>>>> db92107c510178969026f96d6d9a82c01b032da6
 }
