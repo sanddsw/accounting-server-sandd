@@ -1,5 +1,5 @@
 {
-  "name": "node-facturi-ssw",
+  "name": "ssw-facturi-node",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,6 +24,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:sanddsoftworks/node-facturi-ssw.git"
+    "url": "git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git"
   }
 }
