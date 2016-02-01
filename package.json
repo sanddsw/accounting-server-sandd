@@ -1,5 +1,5 @@
 {
-  "name": "server-autorizatie-isu",
+  "name": "node-facturi-ssw",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,6 +24,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:terraapps/server-autorizatie-isu.ro.git"
+    "url": "git@bitbucket.org:terraapps/node-facturi-ssw.git"
   }
 }
