@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "_args": [
     [
       "git+ssh://git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git",
@@ -26,6 +27,13 @@
     "scope": null,
     "spec": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git",
     "type": "hosted"
+=======
+  "name": "ssw-facturi-node",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+>>>>>>> db92107c510178969026f96d6d9a82c01b032da6
   },
   "_requiredBy": [
     "/"
@@ -61,10 +69,15 @@
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+ssh://git@bitbucket.org/sanddsoftworks/ssw-facturi-node.git"
   },
   "scripts": {
     "start": "node ./bin/www"
   },
   "version": "0.0.1"
+=======
+    "url": "git@bitbucket.org:sanddsoftworks/ssw-facturi-node.git"
+  }
+>>>>>>> db92107c510178969026f96d6d9a82c01b032da6
 }
