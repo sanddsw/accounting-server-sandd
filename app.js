@@ -8,6 +8,7 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 require('./models/Client');
+require('./models/Bon');
 require('./models/Facturi');
 require('./models/Apartamente');
 require('./models/User');
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://ds047955.mongolab.com:47955/facturi-ssw', {
 });
 
 var routes = require('./routes/index');
+var bonRoute = require('./routes/bonuri');
 var client = require('./routes/clients');
 var facturi = require('./routes/facturi');
 var generator = require('./routes/generator');
@@ -46,6 +48,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/clients', client);
+app.use('/bonuri', bonRoute);
 app.use('/generator', generator);
 app.use('/facturi', facturi);
 app.use('/apartamente', apartamente);
