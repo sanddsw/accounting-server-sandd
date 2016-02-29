@@ -28,8 +28,8 @@ router.post('/update/', function(req, res) {
   })
 });
 
-router.post('/upload/', upload.single('file'), function(req, res, next) {
-  res.json(req.file.filename).end();
-});
+//router.post('/upload/', upload.single('file'), function(req, res, next) {
+//  res.json(req.file.filename).end();
+//});
 
 module.exports = router;
