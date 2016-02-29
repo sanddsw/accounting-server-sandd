@@ -10,7 +10,6 @@ var express = require('express'),
 require('./models/Client');
 require('./models/Bon');
 require('./models/Facturi');
-require('./models/Apartamente');
 require('./models/User');
 mongoose.connect('mongodb://ds047955.mongolab.com:47955/facturi-ssw', {
   user: 'facturier',
@@ -22,7 +21,6 @@ var bonRoute = require('./routes/bonuri');
 var client = require('./routes/clients');
 var facturi = require('./routes/facturi');
 var generator = require('./routes/generator');
-var apartamente = require('./routes/apartamente');
 var users = require('./routes/users');
 
 var app = express();
@@ -51,7 +49,6 @@ app.use('/clients', client);
 app.use('/bonuri', bonRoute);
 app.use('/generator', generator);
 app.use('/facturi', facturi);
-app.use('/apartamente', apartamente);
 app.use('/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
