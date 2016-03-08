@@ -4,6 +4,7 @@ var fs = require('fs');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Factura = mongoose.model('Facturi');
+var Client = mongoose.model('Client');
 var multer  = require('multer');
 var upload = multer({ dest: './uploads/' });
 var wkhtmltopdf = require('wkhtmltopdf');
@@ -21,6 +22,15 @@ router.get('/get/:lang/:id', function (req, res) {
         .pipe(fs.createWriteStream(path.join(__dirname, '../out.pdf')).on('close', function() {
             res.sendFile(path.join(__dirname, '../out.pdf'))
     }));
+});
+
+router.get('/:id', function (req, res) {
+    var id = req.params.id;
+    Factura.findOne({_id: id}).populate('buyer').exec(function(err, asset) {
+        console.log(err);
+        console.log(asset);
+        res.json(asset);
+    });
 });
 
 router.post('/', function(req, res, next) {

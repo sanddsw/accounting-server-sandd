@@ -10,6 +10,15 @@ router.get('/', function(req, res, next) {
     res.json(assets);
   });
 });
+
+router.get('/:id', function(req, res, next) {
+    Asset.findOne(req.params.id).exec(function(err, assets){
+        if(err){ return next(err); }
+
+        res.json(assets);
+    });
+});
+
 router.post('/', function(req, res, next) {
   var asset = new Asset(req.body);
   asset.save(function(err, ass){

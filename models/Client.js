@@ -1,16 +1,16 @@
 var generate_model = require('./_model.js');
 
 generate_model("Client", {
-        nume: String,
+        name: String,
         cif: String,
         orc: String,
-        sediu: String,
-        oras: String,
-        judet: String,
-        tara: String,
-        banca: [{
-            nume: String,
-            cont: String
+        address: String,
+        city: String,
+        region: String,
+        country: String,
+        banks: [{
+            name: String,
+            account: String
         }]
     }
 );
