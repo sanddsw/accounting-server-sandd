@@ -1,6 +1,4 @@
 <div class="sus">
-  <span class="float top"></span>
-  <span class="float btm"></span>
   <div class="pane logo">
     <img src="images/logo.png">
   </div>
@@ -12,26 +10,26 @@
       <p><small>{{f.int8n.name}}</small>{{f.bill.seller.name}}</p>
       <p><small>{{f.int8n.cif}}</small>{{f.bill.seller.cif}}</p>
       <p><small>{{f.int8n.orc}}</small>{{f.bill.seller.orc}}</p>
-      <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.sediu}}</p>
-      <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.oras}}</p>
-      <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.judet}}</p>
-      <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.tara}}</p>
-      <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.banca}}</p>
-      <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.cont}}</p>
+      <p><small>{{f.int8n.sediu}}</small>{{f.bill.seller.address}}</p>
+      <p><small>{{f.int8n.oras}}</small>{{f.bill.seller.city}}</p>
+      <p><small>{{f.int8n.judet}}</small>{{f.bill.seller.region}}</p>
+      <p><small>{{f.int8n.tara}}</small>{{f.bill.seller.country}}</p>
+      <p><small>{{f.int8n.banca}}</small>{{f.bill.seller.bank}}</p>
+      <p><small>{{f.int8n.cont}}</small>{{f.bill.seller.bankAccount}}</p>
     </div>
     <div class="cumparator">
       <div class="head">
         {{f.int8n.cumparator}}
       </div>
       <p><small>{{f.int8n.name}}</small>{{f.bill.buyer.name}}</p>
-      <p><small>{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
-      <p><small>{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
-      <p><small>{{f.int8n.sediu}}</small>{{f.bill.buyer.sediu}}</p>
-      <p><small>{{f.int8n.oras}}</small>{{f.bill.buyer.oras}}</p>
-      <p><small>{{f.int8n.judet}}</small>{{f.bill.buyer.judet}}</p>
-      <p><small>{{f.int8n.tara}}</small>{{f.bill.buyer.tara}}</p>
-      <p><small>{{f.int8n.banca}}</small>{{f.bill.buyer.banca}}</p>
-      <p><small>{{f.int8n.cont}}</small>{{f.bill.buyer.cont}}</p>
+      <p><small ng-if="f.bill.buyer.cif">{{f.int8n.cif}}</small>{{f.bill.buyer.cif}}</p>
+      <p><small ng-if="f.bill.buyer.orc">{{f.int8n.orc}}</small>{{f.bill.buyer.orc}}</p>
+      <p><small ng-if="f.bill.buyer.address">{{f.int8n.sediu}}</small>{{f.bill.buyer.address}}</p>
+      <p><small ng-if="f.bill.buyer.city">{{f.int8n.oras}}</small>{{f.bill.buyer.city}}</p>
+      <p><small ng-if="f.bill.buyer.region">{{f.int8n.judet}}</small>{{f.bill.buyer.region}}</p>
+      <p><small ng-if="f.bill.buyer.country">{{f.int8n.tara}}</small>{{f.bill.buyer.country}}</p>
+      <p><small ng-if="f.bill.buyer.bank">{{f.int8n.banca}}</small>{{f.bill.buyer.bank}}</p>
+      <p><small ng-if="f.bill.buyer.bankAccount">{{f.int8n.cont}}</small>{{f.bill.buyer.bankAccount}}</p>
     </div>
   </div>
   <div class="pane details">
@@ -40,10 +38,10 @@
         {{f.int8n.f_title}}
       </p>
       <p class="s-no">
-        <small>{{f.int8n.serie}}</small>{{f.bill.serie}}<small>{{f.int8n.numar}}</small>{{f.bill.numar}}
+        <small>{{f.int8n.serie}}</small>{{f.bill.series}}<small>{{f.int8n.numar}}</small>{{f.bill.number}}
       </p>
       <p class="date">
-        <small>{{f.int8n.data}}</small>{{f.bill.data}}
+        <small>{{f.int8n.data}}</small>{{f.bill.date | date:'yyyy-MM-dd'}}
       </p>
     </div>
     <div class="right">
