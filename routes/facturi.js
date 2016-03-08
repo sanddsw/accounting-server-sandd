@@ -17,8 +17,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/get/:lang/:id', function (req, res) {
-    wkhtmltopdf('http://localhost:8080/generator/#/' + req.params.lang + '/' + req.params.id , { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
+router.get('/get/:user/:lang/:id', function (req, res) {
+    wkhtmltopdf('http://localhost:8080/generator/#/' + req.params.lang + '/' + req.params.id + '/' + req.params.user, { pageSize: 'A4', marginTop: '0mm', marginBottom: '0mm', marginLeft: '0mm', marginRight: '0mm' })
         .pipe(fs.createWriteStream(path.join(__dirname, '../out.pdf')).on('close', function() {
             res.sendFile(path.join(__dirname, '../out.pdf'))
     }));

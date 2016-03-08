@@ -57,7 +57,7 @@
 <div class="table">
   <div class="tab">
     <div ng-repeat="task in f.bill.columns"
-         ng-style="{{f.getWidth($index)}}">
+         ng-style="f.getWidth($index)">
       {{task}}
     </div>
   </div>
@@ -66,17 +66,37 @@
       <p class="title">{{prod.title}}</p>
       <p class="desc">{{prod.desc}}</p>
     </div>
-    <div ng-repeat="line in prod.lines" ng-style="{{f.getLineWidth($index)}}">
+    <div ng-repeat="line in prod.lines" ng-style="f.getLineWidth($index)">
       {{line + ' ' + f.bill.currency}}</div>
   </div>
 </div>
 <div class="jos">
   <div class="foot">
     <div class="left">
-
+      <span class="sign">
+        {{f.int8n.sign}}
+      </span>
     </div>
     <div class="right">
-
+        <span class="total">
+          {{f.int8n.total}}
+        </span>
+        <span class="worth">
+          {{f.bill.total + ' ' + f.bill.currency}}
+        </span>
     </div>
+    <p class="disclaimer">{{f.int8n.disclaimer}}</p>
+  </div>
+  <div class="dets">
+    <div class="l">
+      {{f.int8n.emitter.text}}
+    </div>
+    <div class="m">
+      <p>{{f.int8n.emitter.name}}</p>
+      <p>{{f.int8n.emitter.email}}</p>
+      <p>{{f.int8n.emitter.cnp}}</p>
+    </div>
+    <img src="images/logomic.png" class="r">
+    </img>
   </div>
 </div>
