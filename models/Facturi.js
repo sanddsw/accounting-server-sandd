@@ -6,6 +6,7 @@ generate_model("Facturi", {
         buyer: {type: ObjectId, ref: 'Client'},
         date: { type: Date, default: Date.now },
         currency: String,
+        total: Number,
         seller: {
             name: String,
             cif: String,

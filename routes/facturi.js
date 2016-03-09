@@ -10,7 +10,7 @@ var upload = multer({ dest: './uploads/' });
 var wkhtmltopdf = require('wkhtmltopdf');
 
 router.get('/', function(req, res, next) {
-  Factura.find().exec(function(err, assets){
+  Factura.find().populate('buyer').exec(function(err, assets){
     if(err){ return next(err); }
 
     res.json(assets);
