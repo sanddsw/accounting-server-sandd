@@ -11,6 +11,28 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/:id', function(req, res, next) {
+    Bon.findOne(req.params.id).exec(function(err, assets){
+        if(err){ return next(err); }
+
+        res.json(assets);
+    });
+});
+
+router.delete('/:id', function (req, res) {
+    var id = req.params.id;
+    Bon.findOne({_id:id }, function (err, model) {
+        if (err) {
+            return;
+        }
+        model.remove(function (err) {
+            if(err){ return next(err); }
+
+            res.send('Deleted ' + id);
+        });
+    });
+});
+
 router.post('/', function(req, res, next) {
   var asset = new Bon(req.body);
   asset.save(function(err, ass){

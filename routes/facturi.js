@@ -27,9 +27,22 @@ router.get('/get/:user/:lang/:id', function (req, res) {
 router.get('/:id', function (req, res) {
     var id = req.params.id;
     Factura.findOne({_id: id}).populate('buyer').exec(function(err, asset) {
-        console.log(err);
-        console.log(asset);
         res.json(asset);
+    });
+});
+
+router.delete('/:id', function (req, res) {
+    console.log("Received delete request for " + req.params.id);
+    var id = req.params.id;
+    Factura.findOne({_id:id }, function (err, model) {
+        if (err) {
+            return;
+        }
+        model.remove(function (err) {
+            if(err){ return next(err); }
+
+            res.send('Deleted ' + id);
+        });
     });
 });
 

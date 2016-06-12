@@ -19,6 +19,20 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.delete('/:id', function (req, res) {
+    var id = req.params.id;
+    Asset.findOne({_id:id }, function (err, model) {
+        if (err) {
+            return;
+        }
+        model.remove(function (err) {
+            if(err){ return next(err); }
+
+            res.send('Deleted ' + id);
+        });
+    });
+});
+
 router.post('/', function(req, res, next) {
   var asset = new Asset(req.body);
   asset.save(function(err, ass){
@@ -27,6 +41,7 @@ router.post('/', function(req, res, next) {
     res.json(ass);
   });
 });
+
 router.post('/update/', function(req, res, next) {
   var asset = new Asset(req.body);
   delete req.body["_id"];
