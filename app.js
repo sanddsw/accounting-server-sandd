@@ -6,6 +6,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
+var scribe = require('scribe-js')(); //loads Scribe
+var console = process.console;
 
 require('./models/Client');
 require('./models/Bon');
@@ -45,12 +47,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(scribe.express.logger());
 app.use('/', routes);
 app.use('/clients', client);
 app.use('/bonuri', bonRoute);
 app.use('/generator', generator);
 app.use('/facturi', facturi);
 app.use('/users', users);
+app.use('/logs', scribe.webPanel());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -81,6 +85,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+console.info("Server started...");
 
 
 module.exports = app;

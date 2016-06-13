@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var console = process.console;
 
 // router.post('/register/', function(req, res, next) {
 //     var user = new User(req.body);
@@ -16,31 +17,35 @@ var User = mongoose.model('User');
 //     });
 // });
 router.post('/login/', function(req, response, next) {
+    console.log(req.body);
     var loginDetails = req.body;
     var res = {};
-    var type = (require('email-validator').validate(loginDetails.username)) ? "email" : "username";
     var query = {};
-    query[type] = loginDetails[type];
+    query['email'] = loginDetails['username'];
+    console.log(query);
     User.findOne(query).exec(function (err, user) {
+        console.log(user);
         if (err) return handleError(err);
         if(user == null) {
             res = {
                 success: false,
-                reason: "Nu exista un asemenea " + type + "!"
-            }
+                reason: "No such email"
+            };
+            console.info("User not found");
         } else if(user.password === loginDetails.password) {
             user.password = "";
             res = {
                 success: true,
                 user: user
-            }
+            };
+            console.info("Login success");
         } else {
             res = {
                 success: false,
                 reason: "Parola incorecta!"
             }
+            console.info("Password not found");
         }
-        console.log(res);
         response.json(res);
     });
 });
