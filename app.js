@@ -17,12 +17,7 @@ require('./models/User');
 var mongoUrl = process.env.MONGO_HOST;
 var mongoPort = process.env.MONGO_PORT;
 var mongoDb = process.env.MONGO_DB;
-var mongoUser = process.env.MONGO_USER;
-var mongoPass = process.env.MONGO_PASS;
-mongoose.connect('mongodb://' + mongoUrl + ':' + mongoPort + '/' + mongoDb, {
-  user: mongoUser,
-  pass: mongoPass
-});
+mongoose.connect('mongodb://' + mongoUrl + ':' + mongoPort + '/' + mongoDb);
 
 var routes = require('./routes/index');
 var bonRoute = require('./routes/bonuri');
