@@ -13,9 +13,15 @@ require('./models/Client');
 require('./models/Bon');
 require('./models/Facturi');
 require('./models/User');
-mongoose.connect('mongodb://ds047955.mongolab.com:47955/facturi-ssw', {
-  user: 'facturier',
-  pass: '(&s^aDdD*&S'
+
+var mongoUrl = process.env.MONGO_HOST;
+var mongoPort = process.env.MONGO_PORT;
+var mongoDb = process.env.MONGO_DB;
+var mongoUser = process.env.MONGO_USER;
+var mongoPass = process.env.MONGO_PASS;
+mongoose.connect('mongodb://' + mongoUrl + ':' + mongoPort + '/' + mongoDb, {
+  user: mongoUser,
+  pass: mongoPass
 });
 
 var routes = require('./routes/index');
